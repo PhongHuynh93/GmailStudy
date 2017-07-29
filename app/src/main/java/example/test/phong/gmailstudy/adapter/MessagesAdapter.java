@@ -34,6 +34,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     private Context mContext;
     private List<MessageKl> messages;
     private MessageAdapterListener listener;
+    // used to remember which rows we selected
     private SparseBooleanArray selectedItems;
 
     // array used to perform multiple animation at once
@@ -69,6 +70,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         @Override
         public boolean onLongClick(View view) {
             listener.onRowLongClicked(getAdapterPosition());
+            // info haptic feedback là gì? Longpress make a little vibrate
+            // You know how your Android phone vibrates a tiny bit when you tap one of the navigation buttons? That's haptics at work.
+            // https://www.androidcentral.com/android-z-haptic-feedback
             view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             return true;
         }
@@ -172,6 +176,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         }
     }
 
+    // info - only apply flip animation when we select this row,
     private void applyIconAnimation(MyViewHolder holder, int position) {
         if (selectedItems.get(position, false)) {
             holder.iconFront.setVisibility(View.GONE);

@@ -16,7 +16,7 @@ public class FlipAnimator {
     private static AnimatorSet leftIn, rightOut, leftOut, rightIn;
 
     /**
-     * Performs flip animation on two views
+     * info - Performs flip animation on two views back and from
      */
     public static void flipView(Context context, final View back, final View front, boolean showFront) {
         leftIn = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.card_flip_left_in);
